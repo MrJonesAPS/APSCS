@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APS Computer Science</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        #graph-container {
+            margin: 20px auto;
+            width: 90%; /* Adjust the width as needed */
+            min-height: 400px; /* Set a minimum height */
+            max-width: 1200px; /* Set a maximum width to accommodate wide graphs */
+            display: block; /* Ensure the container is a block element */
+            text-align: center; /* Center the content inside the container */
+        }
+
+        #toggles, #description {
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #toggles h2, #description h2 {
+            margin-top: 0;
+        }
+
+        #toggles {
+            text-align: center;
+        }
+
+        #toggles button {
+            padding: 10px;
+            margin: 10px 5px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #toggles button:hover {
+            background-color: #0056b3;
+        }
+        #toggles button.active {
+            background-color: #28a745; /* Green background for active state */
+            border: 2px solid #1e7e34; /* Darker green border for active state */
+            color: #fff; /* White text color for active state */
+        }
+
+        #courseDescription {
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            bottom: 0;
+        }
+    </style>
+    <script type="module">
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize Mermaid with startOnLoad set to false
+            mermaid.initialize({ startOnLoad: false });
+
+            // Initial Mermaid graph definition
+            let mainGraph = `
+        
+        subgraph Recommended Start
+            F[Intro to IT]
+            click F it_desc
+        end
+        
+        subgraph Standard Path
+            F --> B[Programming]
+            click B prog_desc
+            B --> G[Computer Programming Advanced]
+            click G advprog_desc
+            G --> H[AP CS A]
+            click H apcsa_desc
+        end`;
+
+    let feeders = `
+        subgraph Optional Feeder Classes
+            C[AP CS Principles]
+            click C apcsp_desc
+            E[Game Design]
+            click E game_desc
+            O[Robotics]
+            click O robo_desc
+        end 
+        
+        C --> G
+        E --> B
+        O --> B
+    `
+
+    let accgraph = `
+            subgraph Courses only at ACC
+                subgraph NOVA CS Associates
+                    D[Web Page Design]
+                    click D web_desc
+                    D --> I[DE Computer Programming] 
+                    click I de_prog_1_desc
+                    H --> J
+                    I --> J[DE Computer Programming Intensified]
+                    click J de_prog_2_desc
+                    J --> K[DE Computer Programming Advanced]
+                    click K de_prog_3_desc
+                end
+                subgraph NOVA Web Certificate
+                    J --> L[Database Design & Management]
+                    click L db_desc
+                end
+            
+            end
+            `;
+
+            let ibgraph = `
+            subgraph Courses only at WLHS
+                M[IB CS SL/HL I] --> N[IB CS HL II]
+                click M ib_1_desc
+                click N ib_2_desc
+                B --> M
+                H --> N
+            end
+            `
+
+            let graphDefinition = mainGraph;
+
+            // Array to store added nodes (so we can track if they exist)
+            let addedNodes = ['main'];
+
+            // Function to render the graph
+            function renderGraph() {
+                // Render the Mermaid graph inside the container
+                graphDefinition = `graph TD
+
+                subgraph Courses at Home Schools
+                `;
+                
+                if (addedNodes.includes('main')) {
+                    graphDefinition += mainGraph;
+                }
+                if (addedNodes.includes('feeders')){
+                    graphDefinition += feeders;
+                }
+                graphDefinition += `
+                end
+                `
+                if (addedNodes.includes('acc')){
+                    graphDefinition += accgraph;
+                }
+                if (addedNodes.includes('ib')){
+                    graphDefinition += ibgraph;
+                }
+                
+                
+                document.getElementById("graph-container").innerHTML = `<div class="mermaid">${graphDefinition}</div>`;
+                mermaid.init({
+                    securityLevel: 'loose',
+                });
+            
+            //Course description for Programming
+            var prog_desc = function() {
+            document.getElementById("courseDescription").innerHTML = `
+            <h1>Programming</h1>
+            <p>
+                Introductory Python Programming Course. Best for:
+                <ul>
+                    <li>Students who want an introduction to programming</li>
+                    <li>Often mostly underclassmen</li>
+                    <li>No previous coding experience is expected</li>
+                    <li>Students who have completed fewer math courses</li>
+                    <li>Students who enjoy puzzles and logic</li>
+                    <li>Typically no homework if class time is utilized correctly</li>
+                </ul>
+            </p>
+            <p>Official Links:
+                <ul>
+                    <li><a href="https://catalog.apsva.us/career-technical-courses/computer-programming">APS Program of Studies</a></li>
+                    <li><a href="https://www.cteresource.org/career-clusters/information-technology/programming/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.prog_desc = prog_desc;
+
+            //Course description for Advanced Programming
+            var advprog_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>Advanced Programming</h1>
+            <p>
+                Continues with concepts introduced in Programming, focus on projects and object-oriented software concepts.
+            </p>
+            <p>Official Links:
+                <ul>
+            <li><a href="https://catalog.apsva.us/career-technical-courses/computer-programming-advanced">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/programming-advanced/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.advprog_desc = advprog_desc;
+
+            //Course description for Intro to IT
+            var it_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>Intro to IT</h1>
+            <p>
+                Recommended (but not required) as an entry point for any students interested in computing. Focuses on understanding of how computers and the internet works. Introduces some web design and programming concepts.
+            </p>
+            <p>Official Links:
+                <ul>
+            <li><a href="https://catalog.apsva.us/business-information-technology-it/introduction-to-information-technology">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/information-technology-it-fundamentals/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.it_desc = it_desc;
+
+            //Course description for APCSA
+            var apcsa_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>AP Computer Science A</h1>
+            <p>
+                AP-level course in Java. Assumes that students are already comfortable in Python.
+            </p>
+            <p>Official Links:
+                <ul>
+                    <li><a href="https://apstudents.collegeboard.org/courses/ap-computer-science-a">College Board Website</a></li>
+            <li><a href="https://catalog.apsva.us/computer-science/computer-science-ap">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/ap-computer-science-a/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.apcsa_desc = apcsa_desc;
+
+            //Course description for APCSP
+            var apcsp_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>AP Computer Science Principles</h1>
+            <p>
+                A survey course intended for students who have no other computing experience. Students who have already taken another computer programming course should not take this course.
+            </p>
+            <p>Official Links:
+                <ul>
+                    <li><a href="https://apcentral.collegeboard.org/courses/ap-computer-science-principles">College Board Website</a></li>
+            <li><a href="https://catalog.apsva.us/computer-science/computer-science-principles-ap">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/ap-computer-science-principles/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.apcsp_desc = apcsp_desc;
+            
+            //Course description for Game Design
+            var game_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>Game Design</h1>
+            <p>
+                Introduction to Game Design in Unity. A good introductory class for students who have no programming experience.
+            </p>
+            <p>Official Links:
+                <ul>
+            <li><a href="https://catalog.apsva.us/technology-education/introduction-to-game-design">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/arts-a-v-technology-communications/game-design-and-development/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.game_desc = game_desc;
+
+            //Course description for Robo Design
+            var robo_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>Technology of Robotic Design</h1>
+            <p>
+                COURSE DESCRIPTION HERE
+            </p>
+            <p>Official Links:
+                <ul>
+            <li><a href="https://catalog.apsva.us/technology-education/technology-of-robotic-design-0">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/science-technology-engineering-mathematics/17535/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.robo_desc = robo_desc;
+
+            //Course description for Web Design
+            var web_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>Web Design</h1>
+            <p>
+                Dual Enrolled with NOVA Community College. Students must also register with NOVA. <a href="https://www.nvcc.edu/admissions/dual-enrollment/procedures/contract.html">See instructions here</a>
+                <br>
+                <a href="https://ict.gctaa.net/sections/webdev/">See course homepage here</a>
+            </p>
+            <p>Official Links:
+                <ul>
+                    <li><a href="http://www.nvcc.edu/dist/files/sites/academics/summaries/ITD110.pdf">NOVA Course Description - Semester 1</a></li>
+                    <li><a href="http://www.nvcc.edu/dist/files/sites/academics/summaries/ITD210.pdf">NOVA Course Description - Semester 2</a></li>
+            <li><a href="https://catalog.apsva.us/business-information-technology-it/web-page-design-multimedia">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/design-multimedia-and-web-technologies-1/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.web_desc = web_desc;
+
+            //Course description for DB Design
+            var db_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>Database Design</h1>
+            <p>
+                Dual Enrolled with NOVA Community College. Students must also register with NOVA. <a href="https://www.nvcc.edu/admissions/dual-enrollment/procedures/contract.html">See instructions here</a>
+                <br>
+                <a href="https://ict.gctaa.net/sections/ite140/">See course homepage here</a>
+            </p>
+            <p>Official Links:
+                <ul>
+                    <li><a href="http://www.nvcc.edu/dist/files/sites/academics/summaries/ITE140.pdf">NOVA Course Description - Semester 1</a></li>
+                    <li><a href="http://www.nvcc.edu/dist/files/sites/academics/summaries/ITD256.pdf">NOVA Course Description - Semester 2</a></li>
+            <li><a href="https://catalog.apsva.us/career-technical-courses/database-design-management">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/database-design-and-management-oracle/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.db_desc = db_desc;
+
+            //Course description for DE Prog 1
+            var de_prog_1_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>Computer Programming DE</h1>
+            <p>
+                Dual Enrolled with NOVA Community College. Students must also register with NOVA. <a href="https://www.nvcc.edu/admissions/dual-enrollment/procedures/contract.html">See instructions here</a>
+                <br>
+                <a href="https://ict.gctaa.net/">Learn more at the ACC CS homepage</a>
+            </p>
+            <p>Official Links:
+                <ul>
+                    <li><a href="http://www.nvcc.edu/dist/files/sites/academics/summaries/CSC221.pdf">NOVA Course Description - Semester 1</a></li>
+                    <li><a href="https://www.nvcc.edu/dist/files/sites/academics/summaries/itp225.pdf">NOVA Course Description - Semester 2</a></li>
+            <li><a href="https://catalog.apsva.us/career-technical-courses/computer-programming">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/programming/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.de_prog_1_desc = de_prog_1_desc;
+            
+            //Course description for DE Prog 2
+            var de_prog_2_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>Computer Programming Intensified DE</h1>
+            <p>
+                Dual Enrolled with NOVA Community College. Students must also register with NOVA. <a href="https://www.nvcc.edu/admissions/dual-enrollment/procedures/contract.html">See instructions here</a>
+                <br>
+                Students who take this course after AP CS A must score a 3 or higher on the AP exam.
+                <br>
+                <a href="https://ict.gctaa.net/">Learn more at the ACC CS homepage</a>
+            </p>
+            <p>Official Links:
+                <ul>
+                    <li><a href="http://www.nvcc.edu/academic/coursecont/summaries/CSC222.pdf">NOVA Course Description - Semester 1</a></li>
+                    <li><a href="http://www.nvcc.edu/academic/coursecont/summaries/CSC208.pdf">NOVA Course Description - Semester 2</a></li>
+            <li><a href="https://catalog.apsva.us/career-technical-courses/computer-programming-intensified">APS Program of Studies</a></li>
+            
+            <li><a href="#">VDOE Course Description (does not exist)</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.de_prog_2_desc = de_prog_2_desc;
+            
+            //Course description for DE Prog 3
+            var de_prog_3_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>Computer Programming Advanced DE</h1>
+            <p>
+                Dual Enrolled with NOVA Community College. Students must also register with NOVA. <a href="https://www.nvcc.edu/admissions/dual-enrollment/procedures/contract.html">See instructions here</a>
+                <br>
+                <a href="https://ict.gctaa.net/">Learn more at the ACC CS homepage</a>
+            </p>
+            <p>Official Links:
+                <ul>
+                    <li><a href="http://www.nvcc.edu/academic/coursecont/summaries/CSC215.pdf">NOVA Course Description - Semester 1</a></li>
+                    <li><a href="http://www.nvcc.edu/academic/coursecont/summaries/CSC223.pdf">NOVA Course Description - Semester 2</a></li>
+            <li><a href="https://catalog.apsva.us/career-technical-courses/computer-programming-advanced">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/programming-advanced/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.de_prog_3_desc = de_prog_3_desc;
+
+            //Course description for IB CS 1
+            var ib_1_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>IB CS SL and IB CS HL I</h1>
+            <p>
+                Programming in Java and Python. No IB Exam in Year 1, but possible certification in Python.
+                <br>
+                Good for:
+                <ul>
+                    <li>10th & 11th graders who took CS and received an A</li>
+<li>POS says 11th grade, but 10th graders are also encouraged</li>
+<li>No previous programming experience is required; however, it is helpful</li>
+<li>Students with stronger math backgrounds and are interested in learning computer programming</li>
+            </p>
+            <p>Official Links:
+                <ul>
+            <li><a href="https://catalog.apsva.us/international-baccalaureate/ib-computer-science-part-i-sl">APS Program of Studies (SL)</a></li>
+            
+            <li><a href="https://catalog.apsva.us/international-baccalaureate/ib-computer-science-part-i-hl">APS Program of Studies (HL)</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/international-baccalaureate-computer-science/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.ib_1_desc = ib_1_desc;
+            
+            //Course description for IB CS 2
+            var ib_2_desc = function() {
+                document.getElementById("courseDescription").innerHTML = `
+            <h1>IB CS HL II</h1>
+            <p>
+                Second course to IB CS HL I. Internal Assessment project completed during year and IB Exam in May
+            </p>
+            <p>Official Links:
+                <ul>
+            <li><a href="https://catalog.apsva.us/international-baccalaureate/ib-computer-science-part-ii-hl">APS Program of Studies</a></li>
+            
+            <li><a href="https://www.cteresource.org/career-clusters/information-technology/international-baccalaureate-computer-science/">VDOE Course Description</a></li>
+                </ul>
+            </p>
+            `;
+            };
+            window.ib_1_desc = ib_1_desc;
+
+
+            }
+
+            // Render the initial graph
+            renderGraph();
+
+
+
+            document.getElementById("toggleACC").addEventListener("click", (event) => {
+                if (!addedNodes.includes('acc')) {
+                    addedNodes.push('acc');
+                    event.target.classList.add('active');
+                } else {
+                    addedNodes = addedNodes.filter(node => node !== 'acc');
+                    event.target.classList.remove('active');
+                }
+                renderGraph();
+            });
+
+            document.getElementById("toggleIB").addEventListener("click", (event) => {
+                if (!addedNodes.includes('ib')) {
+                    addedNodes.push('ib');
+                    event.target.classList.add('active');
+                } else {
+                    addedNodes = addedNodes.filter(node => node !== 'ib');
+                    event.target.classList.remove('active');
+                }
+                renderGraph();
+            });
+
+            document.getElementById("toggleFeeders").addEventListener("click", (event) => {
+                if (!addedNodes.includes('feeders')) {
+                    addedNodes.push('feeders');
+                    event.target.classList.add('active');
+                } else {
+                    addedNodes = addedNodes.filter(node => node !== 'feeders');
+                    event.target.classList.remove('active');
+                }
+                renderGraph();
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+    <h2>APS CS Courses</h2>
+    <h3>Informal course descriptions, pre-requisites, and suggested pathways</h3>
+    
+    <div id="graph-container"></div>
+
+    <div id="toggles">
+        <h2>Use these buttons to show/hide additional courses</h2>
+        <button id="toggleFeeders">Optional Home School Classes</button>
+        <button id="toggleACC">ACC Classes</button>
+        <button id="toggleIB">IB Classes</button>
+    </div>
+    <div id="description">
+        
+        <div id="courseDescription">
+            <h2>Click a course name to see its description</h2>
+        </div>
+    </div>
+    <footer>
+        <p>This site is maintained by APS's CS Teacher PLC. It contains informal and unofficial advice. For official guidance, see the APS Program of Studies or contact the CTE Office.
+            <br>
+        Advanced students often skip classes in these sequences. Contact course instructors for advice about placement in course sequences other than this page.</p>
+    </footer>
+</body>
+</html>
