@@ -4,7 +4,7 @@ import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.mi
 let mainGraph = `
 subgraph Recommended Start
     F[Intro to IT]
-    click F it_desc
+    click F call load_md_course("md/it.md")
 end
 
 subgraph Standard Path
