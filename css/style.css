@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header h2, p {
+    text-align: center;
+}
+
+#graph-container {
+    margin: 20px auto;
+    width: 90%; /* Adjust the width as needed */
+    min-height: 400px; /* Set a minimum height */
+    max-width: 1200px; /* Set a maximum width to accommodate wide graphs */
+    display: block; /* Ensure the container is a block element */
+    text-align: center; /* Center the content inside the container */
+}
+
+#toggles, #description {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#toggles h2, #description h2 {
+    margin-top: 0;
+}
+
+#toggles {
+    text-align: center;
+}
+
+#toggles button {
+    padding: 10px;
+    margin: 10px 5px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#toggles button:hover {
+    background-color: #0056b3;
+}
+#toggles button.active {
+    background-color: #28a745; /* Green background for active state */
+    border: 2px solid #1e7e34; /* Darker green border for active state */
+    color: #fff; /* White text color for active state */
+}
+
+#courseDescription {
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #007bff;
+    color: #fff;
+    bottom: 0;
+}
