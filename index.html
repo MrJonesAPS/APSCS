@@ -39,30 +39,36 @@
             click O call load_md_course("md/robo.md")
         end 
         
-        C --> G
-        E --> B
+        C --> G[Computer Programming Advanced]
+        click G call load_md_course("md/advprog.md")
+        E --> B[Programming]
+        click B call load_md_course("md/prog.md")
         O --> B
     `
 
     let accgraph = `
             subgraph Courses only at ACC
-                subgraph NOVA CS Associates
-                    D[Web Page Design]
+                subgraph Core DE CS Classes
+                    D[Web Page Design] --> I[DE Computer Programming] 
                     click D call load_md_course("md/web.md")
-                    D --> I[DE Computer Programming] 
                     click I call load_md_course("md/de_prog_1.md")
-                    H --> J
+                end
+                subgraph NOVA CS Associates
+                    
                     I --> J[DE Computer Programming Intensified]
                     click J call load_md_course("md/de_prog_2.md")
                     J --> K[DE Computer Programming Advanced]
                     click K call load_md_course("md/de_prog_3.md")
                 end
                 subgraph NOVA Web Certificate
-                    J --> L[Database Design & Management]
+                    I --> L[Database Design & Management]
                     click L call load_md_course("md/db.md")
                 end
             
             end
+
+            H[AP CS A] --> J
+            click H call load_md_course("md/apcsa.md")
             `;
 
             let ibgraph = `
@@ -70,9 +76,11 @@
                 M[IB CS SL/HL I] --> N[IB CS HL II]
                 click M call load_md_course("md/ib_1.md")
                 click N call load_md_course("md/ib_2.md")
-                B --> M
-                H --> N
             end
+            B[Programming] --> M
+            click B call load_md_course("md/prog.md")
+            H[AP CS A] --> N
+            click H call load_md_course("md/apcsa.md")
             `
 
             // initialize the variable where we build the graph
@@ -82,20 +90,22 @@
 
             // Function to render the graph
             function renderGraph() {
-                graphDefinition = `graph TD
+                graphDefinition = `graph TD`;
 
-                subgraph Courses at Home Schools
-                `;
-                
-                if (addedNodes.includes('main')) {
-                    graphDefinition += mainGraph;
+                if (addedNodes.includes('main') || addedNodes.includes('feeders')){
+                    graphDefinition += `
+                    subgraph Courses at Home Schools
+                    `;
+                    if (addedNodes.includes('main')) {
+                        graphDefinition += mainGraph;
+                    }
+                    if (addedNodes.includes('feeders')){
+                        graphDefinition += feeders;
+                    }
+                    graphDefinition += `
+                    end
+                    `
                 }
-                if (addedNodes.includes('feeders')){
-                    graphDefinition += feeders;
-                }
-                graphDefinition += `
-                end
-                `
                 if (addedNodes.includes('acc')){
                     graphDefinition += accgraph;
                 }
@@ -169,6 +179,17 @@
                 renderGraph();
             });
 
+            document.getElementById("toggleMain").addEventListener("click", (event) => {
+                if (!addedNodes.includes('main')) {
+                    addedNodes.push('main');
+                    event.target.classList.add('active');
+                } else {
+                    addedNodes = addedNodes.filter(node => node !== 'main');
+                    event.target.classList.remove('active');
+                }
+                renderGraph();
+            });
+
         });
     </script>
 </head>
@@ -182,6 +203,7 @@
 
     <div id="toggles">
         <h2>Use these buttons to show/hide additional courses</h2>
+        <button id="toggleMain" class="active">Recommended Home School Classes</button>
         <button id="toggleFeeders">Optional Home School Classes</button>
         <button id="toggleACC">ACC Classes</button>
         <button id="toggleIB">IB Classes</button>

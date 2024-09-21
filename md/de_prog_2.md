@@ -1,8 +1,12 @@
 # Computer Programming Intensified DE
 
 Dual Enrolled with NOVA Community College. Students must also register with NOVA. [See instructions here](https://www.nvcc.edu/admissions/dual-enrollment/procedures/contract.html)  
+
+## Prerequisites
 Students who take this course after AP CS A must score a 3 or higher on the AP exam.  
 [Learn more at the ACC CS homepage](https://ict.gctaa.net/)
+
+Students who enter this course from AP CS A are expected to be comfortable with the Unix CLI, Git, and a command line text editor (recommended VIM). [See resources here](https://ict.gctaa.net/resources/).
 
 ## Official Links:
 - [NOVA Course Description - Semester 1](http://www.nvcc.edu/academic/coursecont/summaries/CSC222.pdf)
