@@ -6,8 +6,16 @@ body {
     color: #333;
 }
 
-header h2, p {
+header h2 {
     text-align: center;
+}
+
+header p {
+    text-align: center;
+}
+
+#content h2 {
+    background-color:#007bff;
 }
 
 #graph-container {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/style.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js" integrity="sha512-LhccdVNGe2QMEfI3x4DVV3ckMRe36TfydKss6mJpdHjNFiV07dFpS2xzeZedptKZrwxfICJpez09iNioiSZ3hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        fetch("md/faq.md")
+    .then(response => {
+        if (!response.ok) {
+        // If the file is not found (status 404), throw an error
+        throw new Error('File not found');
+        }
+        return response.text();
+    })
+    .then(mdContent => {
+    showdown.setOption('tables','true');
+    var conv = new showdown.Converter();
+    var md_html = conv.makeHtml(mdContent);
+    document.getElementById('content').innerHTML = md_html;
+    })
+    </script>
+</head>
+<header>
+    <h1>Frequently Asked Questions</h1>
+    <a href="index.html">Back to flow chart</a>
+</header>
+    <body>
+<div id="content">
+</div>
+</body>
+</html>
