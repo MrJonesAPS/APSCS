@@ -1,4 +1,4 @@
-# Advanced Programming
+# Computer Programming Advanced
 
 Continues with concepts introduced in Programming, focusing on projects and object-oriented software concepts.
 

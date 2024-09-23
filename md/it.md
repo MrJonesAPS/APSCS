@@ -1,4 +1,4 @@
-# Intro to IT
+# Introduction to Information Technology
 
 Recommended (but not required) as an entry point for any students interested in computing. Focuses on understanding how computers and the internet work. Introduces some web design and programming concepts.
 

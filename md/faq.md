@@ -14,3 +14,9 @@ CS teachers are very willing to accomodate students who have experience outside 
 ## Why does this site contradict the Program of Studies?
 
 The Program of Studies is limited in its ability to represent the courses as they are presented in our schools. The Program of Studies matches the course descriptions provided by VDOE, and the courses in our schools do not always exactly match the VDOE courses. Most of our courses align with AP, IB, DE, or other certification exams and must present content beyond the VDOE description.
+
+## How can I ask a question or propose an edit?
+
+Reach out to any CS teacher in APS. If you aren't sure who, reach out to Chris Jones at ACC. 
+
+Anyone is also welcome to make a pull request against the code repository here: https://github.com/MrJonesAPS/APS-CS-Courses/ 

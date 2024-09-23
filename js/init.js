@@ -10,7 +10,7 @@ end
 subgraph Standard Path
     F --> B[Programming]
     click B call load_md_course("md/prog.md")
-    B --> G[Computer Programming Advanced]
+    B --> G[Advanced Programming]
     click G call load_md_course("md/advprog.md")
     G --> H[AP CS A]
     click H call load_md_course("md/apcsa.md")
@@ -36,15 +36,15 @@ O --> B
 let accgraph = `
 subgraph Courses only at ACC
     subgraph Core DE CS Classes
-        D[Web Page Design] --> I[DE Computer Programming] 
+        D[Web Page Design] --> I[DE Computer Programming I] 
         click D call load_md_course("md/web.md")
         click I call load_md_course("md/de_prog_1.md")
     end
     subgraph NOVA CS Associates
-        H --> J[DE Computer Programming Intensified]
+        H --> J[DE Computer Programming II]
         click J call load_md_course("md/de_prog_2.md")
         I --> J
-        J --> K[DE Computer Programming Advanced]
+        J --> K[DE Computer Programming III]
         click K call load_md_course("md/de_prog_3.md")
     end
     subgraph NOVA Web Certificate
