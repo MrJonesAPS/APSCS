@@ -36,19 +36,19 @@ O --> B
 let accgraph = `
 subgraph Courses only at ACC
     subgraph Core DE CS Classes
-        D[Web Page Design] --> I[DE Computer Programming I] 
+        D[Web Page Design<br>ITD110/ITD210] --> I[DE Computer Programming I<br>CSC221/ITP225] 
         click D call load_md_course("md/web.md")
         click I call load_md_course("md/de_prog_1.md")
     end
     subgraph NOVA CS Associates
-        H --> J[DE Computer Programming II]
+        H --> J[DE Computer Programming II<br>CSC222/CSC208]
         click J call load_md_course("md/de_prog_2.md")
         I --> J
-        J --> K[DE Computer Programming III]
+        J --> K[DE Computer Programming III<br>CSC215/CSC223]
         click K call load_md_course("md/de_prog_3.md")
     end
     subgraph NOVA Web Certificate
-        I --> L[Database Design & Management]
+        I --> L[Database Design & Management<br>ITE140/ITD256]
         click L call load_md_course("md/db.md")
     end
 
@@ -93,10 +93,13 @@ let addedNodes;
 
 if (school === 'acc') {
     addedNodes = ['acc'];
+    document.getElementById("toggleACC").classList.add("active"); 
 } else if (school === 'ib') {
     addedNodes = ['ib'];
+    document.getElementById("toggleIB").classList.add("active"); 
 } else {
     addedNodes = ['main'];
+    document.getElementById("toggleMain").classList.add("active"); 
 }
 
 // Function to render the graph
