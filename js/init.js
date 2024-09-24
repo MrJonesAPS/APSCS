@@ -86,7 +86,18 @@ end
 // initialize the variable where we build the graph
 // and an array to store added nodes (so we can track if they exist)
 let graphDefinition = mainGraph;
-let addedNodes = ['main'];
+
+const urlParams = new URLSearchParams(window.location.search);
+const school = urlParams.get('school');
+let addedNodes;
+
+if (school === 'acc') {
+    addedNodes = ['acc'];
+} else if (school === 'ib') {
+    addedNodes = ['ib'];
+} else {
+    addedNodes = ['main'];
+}
 
 // Function to render the graph
 function renderGraph() {
