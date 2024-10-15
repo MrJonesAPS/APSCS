@@ -8,7 +8,7 @@ This course is Dual Enrolled with NOVA Community College. On the NOVA side, this
 [Learn more at the ACC CS homepage](https://ict.gctaa.net/)
 
 ## Official Links:
-- [NOVA Course Description - CSC 215 Computer Systems (Fall)](http://www.nvcc.edu/academic/coursecont/summaries/CSC215.pdf)
-- [NOVA Course Description - CSC 223 Data Structures and Analysis of Algorithms (Spring)](http://www.nvcc.edu/academic/coursecont/summaries/CSC223.pdf)
+- [NOVA Course Description - CSC 215 Computer Systems (Fall)](https://www.nvcc.edu/dist/files/sites/academics/summaries/CSC215.pdf)
+- [NOVA Course Description - CSC 223 Data Structures and Analysis of Algorithms (Spring)](https://www.nvcc.edu/dist/files/sites/academics/summaries/CSC223.pdf)
 - [APS Program of Studies](https://catalog.apsva.us/career-technical-courses/computer-programming-advanced)
 - [VDOE Course Description](https://www.cteresource.org/career-clusters/information-technology/programming-advanced/)

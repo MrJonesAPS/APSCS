@@ -51,6 +51,14 @@ subgraph Courses only at ACC
         I --> L[Database Design & Management<br>ITE140/ITD256]
         click L call load_md_course("md/db.md")
     end
+    subgraph Cybersecurity
+        D --> P[DE Cybersecurity I<br>ITN106/ITN107/ITE152]
+        click P call load_md_course("md/cyber_1.md")
+        P --> Q[DE Cybersecurity II<br>ITN260/ITN261/ITN262]
+        click Q call load_md_course("md/cyber_2.md")
+        Q --> R[DE Cybersecurity III<br>ITN200/ITN266/ITN170]
+        click R call load_md_course("md/cyber_3.md")
+    end
 
 end
 `;
