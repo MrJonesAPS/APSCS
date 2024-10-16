@@ -3,11 +3,17 @@
 ### APS Course Code: 96658W AND 96663W
 ### NOVA Courses: ITN 200 AND ITN 266 (Fall) / ITN 260 (Spring)
 
+NOTE: This class is not currently offered. It will be offered in the future based on interest.
+
 This course is Dual Enrolled with NOVA Community College. On the NOVA side, this is split into **three** three-credit courses. Students must also register for each course with NOVA. [See instructions here](https://www.nvcc.edu/admissions/dual-enrollment/procedures/contract.html)  
 
 This is a "double block" - so students must register for BOTH: 
 - A Day: Computer Software Network Operations, Advanced
 - B Day: Cybersecurity Software Operations Advanced
+
+## Certifications:
+- 
+- (These are educational certificatons that are equivalent to the traditional CompTia exams)
 
 ## Official Links:
 - [NOVA Course Description - ITN 200 – ADMINISTRATION OF NETWORK RESOURCES (Fall)](https://www.nvcc.edu/dist/files/sites/academics/summaries/ITN200.pdf)

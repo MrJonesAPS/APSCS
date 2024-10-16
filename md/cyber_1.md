@@ -9,6 +9,10 @@ This is a "double block" - so students must register for BOTH:
 - A Day: Cybersecurity Fundamentals
 - B Day: Cybersecurity Network Systems
 
+## Certifications:
+- CertMaster Network+, TestOut PC Pro
+- (These are educational certificatons that are equivalent to the traditional CompTia exams)
+
 ## Official Links:
 - [NOVA Course Description - ITN 106 – Microcomputer Operating Systems (Fall)](https://www.nvcc.edu/dist/files/sites/academics/summaries/ITN106.pdf)
 - [NOVA Course Description - ITE 152 – INTRODUCTION TO DIGITAL AND INFORMATION LITERACY AND COMPUTER APPLICATIONS (Fall)](https://www.nvcc.edu/dist/files/sites/academics/summaries/ITE152.pdf)

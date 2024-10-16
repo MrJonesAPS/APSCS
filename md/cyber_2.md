@@ -9,6 +9,9 @@ This is a "double block" - so students must register for BOTH:
 - A Day: Computer Software Network Operations 
 - B Day: Cybersecurity Software Operations
 
+## Certifications:
+- CompTia Security+, Network+
+
 ## Official Links:
 - [NOVA Course Description - ITN 260 – NETWORK SECURITY BASICS (Fall)](https://www.nvcc.edu/dist/files/sites/academics/summaries/ITN260.pdf)
 - [NOVA Course Description - ITN 261 – NETWORK ATTACKS, COMPUTER CRIME AND HACKING (Fall)](https://www.nvcc.edu/dist/files/sites/academics/summaries/ITN261.pdf)
