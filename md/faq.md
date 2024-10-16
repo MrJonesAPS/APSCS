@@ -17,6 +17,6 @@ The Program of Studies is limited in its ability to represent the courses as the
 
 ## How can I ask a question or propose an edit?
 
-Reach out to any CS teacher in APS. If you aren't sure who, reach out to Chris Jones at ACC. 
+For advice about CS classes, reach out to any CS teacher in APS.
 
-Anyone is also welcome to make a pull request against the code repository here: https://github.com/MrJonesAPS/APS-CS-Courses/ 
+For questions or feedback about this page, reach out to Chris Jones, CS teacher at Arlington Tech: [christopher.jones@apsva.us](mailto:christopher.jones@apsva.us?subject=apscs%20website)
