@@ -35,30 +35,41 @@ O --> B
 
 let accgraph = `
 subgraph Courses only at ACC
-    subgraph Core DE CS Classes
-        D[Web Page Design<br>ITD110/ITD210] --> I[DE Computer Programming I<br>CSC221/ITP225] 
+    subgraph S0["Recommended Core Course"]
+        D[Web Page Design<br>ITD110/ITD210]
         click D call load_md_course("md/web.md")
+    end    
+    
+    subgraph S1["NOVA CS Associates"]
+        I[DE Computer Programming I<br>CSC221/ITP225]
         click I call load_md_course("md/de_prog_1.md")
-    end
-    subgraph NOVA CS Associates
         H --> J[DE Computer Programming II<br>CSC222/CSC208]
         click J call load_md_course("md/de_prog_2.md")
         I --> J
         J --> K[DE Computer Programming III<br>CSC215/CSC223]
         click K call load_md_course("md/de_prog_3.md")
     end
-    subgraph NOVA Web Certificate
+    subgraph S2["NOVA Web Certificate"]
         I --> L[Database Design & Management<br>ITE140/ITD256]
         click L call load_md_course("md/db.md")
     end
-    subgraph Cybersecurity
-        D --> P[DE Cybersecurity I<br>ITN106/ITN107/ITE152/ITN101]
+    subgraph S3[Cybersecurity]
+        P[DE Cybersecurity I<br>ITN106/ITN107/ITE152/ITN101]
         click P call load_md_course("md/cyber_1.md")
         P --> Q[DE Cybersecurity II<br>ITN260/ITN261/ITN262/ITN263]
         click Q call load_md_course("md/cyber_2.md")
         Q --> R[DE Cybersecurity III<br>ITN200/ITN266/ITN170]
         click R call load_md_course("md/cyber_3.md")
     end
+    subgraph S4["Graphic Design"]
+        S[Graphic Communications System]
+        click S call load_md_course("md/graphic.md")
+        T[Digital Animation]
+        click T call load_md_course("md/animation.md")
+    end
+    S0 --> S1
+    S0 --> S3
+    S0 --> S4
 
 end
 `;
@@ -85,7 +96,7 @@ as far as I can tell this behavior is undocumented.
 And I noticed slight differences between behavior here
 and on mermaid.live*/
 let apcsa_standalone = `
-subgraph APCSA
+subgraph APCSA["At Home School"]
     H[AP CS A]
     click H call load_md_course("md/apcsa.md")
 end
