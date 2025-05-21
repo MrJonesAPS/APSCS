@@ -5,7 +5,7 @@
 
 This course is Dual Enrolled with NOVA Community College. On the NOVA side, this is split into two three-credit courses. Students must also register for each course with NOVA. [See instructions here](https://www.nvcc.edu/admissions/dual-enrollment/procedures/contract.html)  
 
-[See course homepage here](https://ict.gctaa.net/sections/webdev/)
+See course homepage here: [ITD110](https://ict.gctaa.net/sections/itd110/) | [ITD210](https://ict.gctaa.net/sections/itd210/)
 
 ## Official Links:
 - [NOVA Course Description - ITD 110 Web Page Design I (Fall)](http://www.nvcc.edu/dist/files/sites/academics/summaries/ITD110.pdf)
